@@ -7,10 +7,17 @@ package programacionavanzada_tarea_01;
 
 public class Lienzo {
 
+    /***
+     * Retorna el ancho del lienzo
+     * @return 
+     */
     public int getAncho() {
         return ancho;
     }
-
+    /***
+     * Retorno el alto del lienzo
+     * @return 
+     */
     public int getAlto() {
         return alto;
     }
@@ -25,12 +32,19 @@ public class Lienzo {
     
     
 // Constructores
-    
+    /***
+     * Construye un lienzo por defecto de 80 caracteres de ancho por 80 caracteres de alto
+     */
     public Lienzo() {
-        this(200, 200);
+        //this(200, 200);
+        this(80, 80);
         
     }
-    
+    /***
+     * Construye un lienzo de tamaño ancho x alto
+     * @param ancho
+     * @param alto 
+     */
     public Lienzo(int ancho, int alto){
         this.ancho=ancho;
         this.alto=alto;
@@ -56,7 +70,7 @@ public class Lienzo {
     
     
     /***
-    ** Imprime el lienzo en la pantalla
+    **Dibuja el lienzo en la consola
      */
     
     public void paint() {
@@ -194,36 +208,86 @@ public class Lienzo {
   
    
    /***
-    * Fabrica un lienzo a partir de un arreglo de cadenas
-    * un ascii art puede estar formado de varias lineas
+    Genera un lienzo a partir de un arreglo de cadenas El lienzo tiene como ancho, el ancho de la cadena más grande 
+    * El lienzo tiene de alto, el número de cadenas presente en el arreglo 
+    * Uso String [] strImagen = { " ,-,", "/.(", "\\ {", " `-`" }; 
+    * Lienzo luna = Lienzo.LienzoFactory(strImagen);
     * @param str
     * @return 
     */
    public static Lienzo lienzoFactory(String[] str){
-       Lienzo lienzo=null;
+      int alto=str.length;
+      int ancho=0;
+      for(String s:str){
+          if(str.length>ancho)
+              ancho=ancho;
+      }
+       Lienzo lienzo=new Lienzo(ancho,alto); 
+       int maxAlto =alto-2;
+        int maxAncho=ancho-1;
+        int x=0,  y=maxAlto;
+      for(String s:str){
+           char [] sc=s.toCharArray();
+            x=0;
+            y--;       
+         lienzo.setTexto(x, y, s);
+      }
        return lienzo;
    }
    
-   
-   public void setTexto(int x,String texto){
-       
-   }
-   
-   
+   /***
+    * Coloca una cadena etiqueta en la posición (x, y) 
+     * @param x
+     * @param y
+     * @param c
+    */
+   public void setTexto(int x, int y,String c){
+        char [] sc=c.toCharArray();
+        int maxAlto =this.getAlto()-2;
+        int maxAncho=this.getAncho()-1;
+        //int x=0, y=maxAlto;
+        for(int i=0;i<sc.length;i++){
+            if(sc[i]=='\n'){
+                x=0;
+                y--;
+            }
+            else
+                x++;
+            if(x<maxAncho && sc[i]!='\n')
+                this.setPen(x, y,sc[i]);
+        }
+            
+    }
+   /***
+    * Borra el contenido del lienzo
+    */
    public void clear(){
-       for(int y=alto-1;y>=0;y--) 
+       for(int y=0-1;y<this.alto-1;y++) 
                 for(int x=0;x<ancho;x++)
                     this.setPen(x, y, ' ');
       
             
    }
    
-   /**
-    * Corta o agranda el arreglo
-    */
+  /***
+   * Cambia el tamaño del lienzo Si se cambia a un tamaño más chico, el lienzo trunca caracteres sobrantes 
+   * Si se cambia a un tamaño más grande, el lienzo tiene espacio vacios solamente
+   */
    
    public void resize(){
        
    }
    
+   /***
+    * Agrega un lienzo la en la posición x, y 
+    * Nota importante: El lienzo la tiene su posicion (0,0) en la posición (x,y) del lienzo anfitrión (del que recibe)
+    * @param x
+    * @param y
+    * @param la 
+    */
+   public void agregaLienzo(int x,
+                         int y,
+                         Lienzo la){
+       
+   }
 }

@@ -11,6 +11,9 @@ package programacionavanzada_tarea_01;
  */
 public class Challenger extends Nave {
     
+    /***
+     * Genera otra nave y utiliza un tamaño adecuado contenerla
+     */
     public Challenger(){
         super(24,24);
          String s="      (=========)\n" +

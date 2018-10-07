@@ -11,12 +11,18 @@ package programacionavanzada_tarea_01;
  */
 public class Nave extends LienzoConMarco {
     
-    
+    /***
+     * Genera la vane de un tamaño personalizado por el usuario
+     * @param ancho
+     * @param alto 
+     */
     protected Nave(int ancho, int alto){
         super(ancho,alto);
     }
     
-    
+   /***
+    *  Genera la nave de un tamaño adecuado (20,32)
+    */
      public Nave(){
         super(20,32);
         String s=

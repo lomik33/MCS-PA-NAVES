@@ -6,42 +6,54 @@
 package programacionavanzada_tarea_01;
 
 /**
- *
- * @author CoreMac
+ *La clase espacio representa una escena espacial de un tamaño 100, 100 
+ * La escena depende del autor pero incluye a la tierra y objetos iniciales.
+ * @author Ismael López Martínez
  */
 public class Espacio extends LienzoConMarco {
     
     private Nave miNave;
     
     public Espacio(Nave miNave){
-        super(100,80);
+        super(100,100);
         this.agregaNave(miNave);
     }
     
     
     
     /***
-   * Agrega una calcomania al lienzo.
-   * @param x
-   * @param y
-   * @param c 
+   * Agrega o actualiza la nave que está en el espacio y la dibuja en la posición 0,0 del espacio 
+     * @param miNave
    */
-   public void agregaNave(Nave c){
+   public void agregaNave(Nave miNave){
        
-        this.miNave=c;
+        this.miNave=miNave;
         this.estadoInicial();
+        mueveNave(0,0);
    }
+   
+   /***
+    *  Regresa la nave que actualmente está en el espacio  
+     * @return 
+   */
 
-    public Nave getMiNae() {
+    public Nave getMiNave() {
         return miNave;
     }
    
-   
+   /***
+    * Dibuja la escena espacial sin la nave.
+    */
    public void estadoInicial(){
        this.clear();
-       mueveNave(1,1);
+     
    }
    
+   /***
+    * Mueve la nave actual a la posición x, y
+    * @param x
+    * @param y 
+    */
    public void mueveNave(int x, int y){
     
        for(int x1=0;x1<miNave.getAncho();x1++)
