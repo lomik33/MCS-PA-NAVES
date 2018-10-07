@@ -219,19 +219,16 @@ public class Lienzo {
       int alto=str.length;
       int ancho=0;
       for(String s:str){
-          if(str.length>ancho)
-              ancho=ancho;
+          if(s.length()>ancho)
+              ancho=s.length();
       }
        Lienzo lienzo=new Lienzo(ancho,alto); 
-       int maxAlto =alto-2;
-        int maxAncho=ancho-1;
-        int x=0,  y=maxAlto;
-      for(String s:str){
-           char [] sc=s.toCharArray();
-            x=0;
-            y--;       
-         lienzo.setTexto(x, y, s);
-      }
+       int maxAlto =alto-1;
+       int x=0,  y=maxAlto;
+       for(String s:str){
+           lienzo.setTexto(x, y, s);  
+           x=0;   y--; 
+       }
        return lienzo;
    }
    
@@ -243,18 +240,13 @@ public class Lienzo {
     */
    public void setTexto(int x, int y,String c){
         char [] sc=c.toCharArray();
-        int maxAlto =this.getAlto()-2;
+      
         int maxAncho=this.getAncho()-1;
+        int maxAlto=this.getAlto()-1;
         //int x=0, y=maxAlto;
-        for(int i=0;i<sc.length;i++){
-            if(sc[i]=='\n'){
-                x=0;
-                y--;
-            }
-            else
-                x++;
-            if(x<maxAncho && sc[i]!='\n')
-                this.setPen(x, y,sc[i]);
+        for(int i=0;i<sc.length;i++){          
+            if(i<=maxAncho&&y<=maxAlto)
+                this.setPen(i, y,sc[i]);
         }
             
     }
@@ -272,10 +264,27 @@ public class Lienzo {
   /***
    * Cambia el tamaño del lienzo Si se cambia a un tamaño más chico, el lienzo trunca caracteres sobrantes 
    * Si se cambia a un tamaño más grande, el lienzo tiene espacio vacios solamente
+     * @param ancho
+     * @param alto
    */
    
-   public void resize(){
-       
+   public void resize(int ancho, int alto){
+          char[][] nuevoLienzo = new char[ancho][alto];
+           for(int i = 0; i < ancho; i++) {
+            for(int j = 0; j < alto; j++) {
+                nuevoLienzo[i][j]=' ';
+            }
+        }
+          for(int ix=0;ix<this.getAncho();ix++){  
+                for(int iy=0;iy<this.getAlto();iy++){
+                    if(!(ix>=ancho||iy>=alto))
+                        nuevoLienzo[ix][iy]=this.lienzo[ix][iy];
+                }
+          }
+          this.alto=alto;
+          this.ancho=ancho;
+          lienzo=nuevoLienzo;
+                
    }
    
    /***
@@ -285,9 +294,21 @@ public class Lienzo {
     * @param y
     * @param la 
     */
-   public void agregaLienzo(int x,
-                         int y,
-                         Lienzo la){
-       
-   }
+    public void agregaLienzo(int x, int y, Lienzo la) {
+        /*Si es mayor el tamaño entonces lo ajusto*/
+        int xtotal = x + la.getAncho();
+        int ytotal = y + la.getAlto();
+        if (ytotal > this.getAlto() || xtotal > this.getAncho()) {
+            resize(xtotal, ytotal);
+        }
+
+        for (int ix = 0; ix < la.getAncho(); ix++) {
+            for (int iy = 0; iy < la.getAlto(); iy++) {
+                this.lienzo[x + ix][y + iy] = la.getLienzo()[ix][iy];
+            }
+        }
+
+        System.out.printf("Se agrego al lienzo de tamaño: %dx%d un lienzo de %dx%d %s", this.getAncho(), this.getAlto(), la.getAncho(), la.getAlto(), System.lineSeparator());
+
+    }
 }

@@ -5,6 +5,16 @@
  */
 package programacionavanzada_tarea_01;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author CoreMac
@@ -26,18 +36,67 @@ public class Main {
             }
         });*/
         
-        Nave miNave = new Nave();
-        Espacio terrestre = new Espacio(miNave);
-        System.out.println(terrestre);
-
-        terrestre.mueveNave(20, 20);
-        System.out.println(terrestre);
+    //        Nave miNave = new Nave();
+    //        Espacio terrestre = new Espacio(miNave);
+    //        System.out.println(terrestre);
+    //
+    //        terrestre.mueveNave(20, 20);
+    //        System.out.println(terrestre);
+    //        
+    //        
+    //        Nave otraNave = new Challenger();
+    //        terrestre.agregaNave(otraNave);
+    //        terrestre.mueveNave(80, 40);
+    //        System.out.println(terrestre);
+    Path currentRelativePath = Paths.get("");
+    String ruta = currentRelativePath.toAbsolutePath().toString()
+            +File.separator
+            +"src"
+            +File.separator
+            +"numeros"
+            +File.separator ;
+    //System.out.println(s);
+    //System.out.println(leerArchivo(s));
+    String texto=leerArchivo(ruta+"2.txt");
+    Lienzo uno=Lienzo.lienzoFactory(texto.split(System.lineSeparator()));
+    texto=leerArchivo(ruta+"3.txt");
+    Lienzo dos=Lienzo.lienzoFactory(texto.split(System.lineSeparator()));
+    texto=leerArchivo(ruta+"4.txt");
+    Lienzo cuatro=Lienzo.lienzoFactory(texto.split(System.lineSeparator()));
+    //System.out.println(texto);
+    //System.out.println(uno);
+    LienzoConMarco lcm=new LienzoConMarco(30,13);
+    lcm.agregaLienzo(1, 1, uno);
+    System.out.println(lcm);
+    lcm.agregaLienzo(1+lcm.getAncho(), 1, cuatro);
+    lcm.agregaLienzo(1+lcm.getAncho(), 1, dos);
+    System.out.println(lcm);
+    
+  
+    System.out.println(lcm);
+    }
+    
+    public static String leerArchivo(String ruta){
+        String contenido="";
+        File file= new File(ruta);
+        if(file.exists()){
+            try {
+                FileReader fileReader= new FileReader(file); 
+                BufferedReader reader= new BufferedReader(fileReader);
+                contenido=reader.readLine()+System.lineSeparator();
+                String linea="";
+                while((linea=reader.readLine())!=null){
+                    contenido+=linea;
+                    contenido+=System.lineSeparator();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
         
-        
-         Nave otraNave = new Challenger();
-        terrestre.agregaNave(otraNave);
-        terrestre.mueveNave(80, 40);
-        System.out.println(terrestre);
+        return contenido;
     }
     
 }
