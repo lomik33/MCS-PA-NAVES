@@ -7,7 +7,7 @@ package programacionavanzada_tarea_01;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -48,32 +48,42 @@ public class Main {
     //        terrestre.agregaNave(otraNave);
     //        terrestre.mueveNave(80, 40);
     //        System.out.println(terrestre);
-    Path currentRelativePath = Paths.get("");
-    String ruta = currentRelativePath.toAbsolutePath().toString()
-            +File.separator
-            +"src"
-            +File.separator
-            +"numeros"
-            +File.separator ;
-    //System.out.println(s);
-    //System.out.println(leerArchivo(s));
-    String texto=leerArchivo(ruta+"2.txt");
-    Lienzo uno=Lienzo.lienzoFactory(texto.split(System.lineSeparator()));
-    texto=leerArchivo(ruta+"3.txt");
-    Lienzo dos=Lienzo.lienzoFactory(texto.split(System.lineSeparator()));
-    texto=leerArchivo(ruta+"4.txt");
-    Lienzo cuatro=Lienzo.lienzoFactory(texto.split(System.lineSeparator()));
-    //System.out.println(texto);
-    //System.out.println(uno);
-    LienzoConMarco lcm=new LienzoConMarco(30,13);
-    lcm.agregaLienzo(1, 1, uno);
-    System.out.println(lcm);
-    lcm.agregaLienzo(1+lcm.getAncho(), 1, cuatro);
-    lcm.agregaLienzo(1+lcm.getAncho(), 1, dos);
-    System.out.println(lcm);
-    
-  
-    System.out.println(lcm);
+//    Path currentRelativePath = Paths.get("");
+//    String ruta = currentRelativePath.toAbsolutePath().toString()
+//            +File.separator
+//            +"src"
+//            +File.separator
+//            +"numeros"
+//            +File.separator ;
+//    //System.out.println(s);
+//    //System.out.println(leerArchivo(s));
+//    String texto=leerArchivo(ruta+"1.txt");
+//    Lienzo uno=Lienzo.lienzoFactory(texto.split(System.lineSeparator()));
+//    texto=leerArchivo(ruta+"2.txt");
+//    Lienzo dos=Lienzo.lienzoFactory(texto.split(System.lineSeparator()));
+//    texto=leerArchivo(ruta+"3.txt");
+//    Lienzo tres=Lienzo.lienzoFactory(texto.split(System.lineSeparator()));
+//    texto=leerArchivo(ruta+"4.txt");
+//    Lienzo cuatro=Lienzo.lienzoFactory(texto.split(System.lineSeparator()));
+//    //System.out.println(texto);
+//    //System.out.println(uno);
+//    LienzoConMarco lcm=new LienzoConMarco(30,13);
+//    lcm.agregaLienzo(1, 1, uno);
+//    System.out.println(lcm);
+//    lcm.agregaLienzo(1+lcm.getAncho(), 1, dos);
+//    System.out.println(lcm);
+//    lcm.agregaLienzo(1+lcm.getAncho(), 1, tres);
+//    System.out.println(lcm);
+//    //lcm.agregaLienzo(1+lcm.getAncho(), 1, cuatro);
+//    //lcm.agregaLienzo(1+lcm.getAncho(), 1, dos);
+//    //System.out.println(lcm);
+//    //System.out.println(lcm);
+
+Reloj reloj= new RelojDigital();
+reloj.setHoraExacta(true);
+reloj.update();
+        System.out.println(reloj);
+
     }
     
     public static String leerArchivo(String ruta){
