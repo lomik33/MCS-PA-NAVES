@@ -79,10 +79,10 @@ public class Main {
 //    //System.out.println(lcm);
 //    //System.out.println(lcm);
 
-Reloj reloj= new RelojDigital();
-reloj.setHoraExacta(true);
-reloj.update();
-        System.out.println(reloj);
+    Reloj reloj= new Reloj();
+    reloj.setHoraExacta(true);
+    reloj.update();
+    System.out.println(reloj);
 
     }
     

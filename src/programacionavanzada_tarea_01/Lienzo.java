@@ -162,13 +162,24 @@ public class Lienzo {
           //double m=Math.tan(a);
           //(y-y1)=m(x-x1)
           //double y2=m*(x1-x2);
-          
+          /*
           double pa=d*Math.cos(Math.toRadians(a));
           double pb=d*Math.sin(Math.toRadians(a));
           double x2=x1+Math.abs(pa);
           double y2=x2+Math.abs(pb);
+          */
+          this.setPen((int)x1,(int)y1,c);
+          double x2=0;
+          double y2=0;
+        for(double t=0; t<=a;t+=.01){
+           x2=x1+d*Math.cos(Math.toRadians(t));
+           y2=y1+d*Math.sin(Math.toRadians(t));
+           //this.setPen((int)x2,(int)y2,c);
+                     //this.dibujaLinea(x1,y1,(int)x2,(int)y2,c);
+
+        }
+          //System.out.println("x2: "+x2+ " y2: "+y2);
           this.dibujaLinea(x1,y1,(int)x2,(int)y2,c);
-          
       }
       
       
