@@ -101,7 +101,11 @@ public class Reloj extends Lienzo {
      */
     public void update(){
         this.clear();
-        
-        
+        int x=this.getAncho()/2;
+        int y=this.getAlto()/2;
+        this.dibujaCirculo(x, y, 20,'*');
+        this.dibujaLinea(x, y,15 , 180.0f, 'h');
+        //this.dibujaSector(x, y, 10, 0, 110, 's');
+
     }
 }
