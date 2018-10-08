@@ -254,7 +254,7 @@ public class Lienzo {
     * Borra el contenido del lienzo
     */
    public void clear(){
-       for(int y=0-1;y<this.alto-1;y++) 
+       for(int y=0;y<this.alto;y++) 
                 for(int x=0;x<ancho;x++)
                     this.setPen(x, y, ' ');
       
