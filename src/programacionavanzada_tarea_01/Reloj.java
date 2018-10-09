@@ -14,6 +14,9 @@ import java.time.format.DateTimeFormatter;
  */
 public class Reloj extends Lienzo {
     
+    private static final float dosPi = (float)(2.0 * Math.PI);
+    private static final float tresPi = (float)(3.0 * Math.PI);
+    private static final float rad = (float)(Math.PI / 30.0);
     
     private int hora;
     private boolean horaExacta;
@@ -80,7 +83,7 @@ public class Reloj extends Lienzo {
         this.horaExacta=horaExacta;
         if(horaExacta){
             	LocalDateTime now = LocalDateTime.now();
-                this.hora=now.getHour();
+                this.hora=Integer.parseInt(now.format(DateTimeFormatter.ofPattern("hh")));
                 this.minutos=now.getMinute();
                 this.segundos=now.getSecond();
         }else{
@@ -103,9 +106,31 @@ public class Reloj extends Lienzo {
         this.clear();
         int x=this.getAncho()/2;
         int y=this.getAlto()/2;
-        this.dibujaCirculo(x, y, 20,'*');
-        this.dibujaLinea(x, y,15 , 180.0f, 'h');
-        //this.dibujaSector(x, y, 10, 0, 110, 's');
-
+        this.dibujaCirculo(x, y, 20,'I');
+        double gradosHora=getGrados(this.hora);
+        System.out.println("hora"+ hora+ "grados "+gradosHora);
+        
+        //this.dibujaLinea(40, 40,15 , gradosHora '.');
+       
     }
+    
+    private int getGrados(int hora){
+        
+        int centinela=0;
+        int hi=3;
+        while(hi!=hora)
+        {
+           
+            
+            hi--; 
+            if(hi==0)
+                hi=12;
+            centinela+=30;
+            
+        }
+        return centinela;
+    }
+    
+    
+    
 }
