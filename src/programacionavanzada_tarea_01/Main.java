@@ -10,8 +10,6 @@ import java.io.File;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -80,7 +78,7 @@ public class Main {
 //    //System.out.println(lcm);
 
     Reloj reloj= new Reloj();
-    reloj.setHoraExacta(true);
+    reloj.setHoraExacta(false);
     reloj.update();
     System.out.println(reloj);
 

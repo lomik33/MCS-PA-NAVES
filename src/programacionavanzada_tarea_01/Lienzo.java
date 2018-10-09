@@ -94,19 +94,37 @@ public class Lienzo {
       */
     public void dibujaLinea(int x1, int y1, int x2, int y2, char c){
 
+        int xswap=x1;
+        int yswap=y1;
+        if(x1>x2){
+            x1=x2;
+            x2=xswap;
+            y1=y2;
+            y2=yswap;
+        }
+        if(y1>y2){
+            //y1=y2;
+            //y2=yswap;
+            //x1=x2;
+            //x2=xswap;
+            
+        }
+        System.out.printf("Trazando linea: x1: %s y1: %s x2: %s y2: %s%s",x1,y1,x2,y2,System.lineSeparator());
+
         if(x1==x2){
             for(int y=y1;y<=y2;y++)
                    setPen(x1,y,c);
      
         }else{
         
+            
         //Pendiente m
         double m=(double)(y2-y1)/(x2-x1);
         //System.out.println(m);
         for(int x=x1;x<=x2;x++){
            double xy=m*(x-x1)+y1;
            //System.out.println(xy);
-           setPen(x,(int)xy,c);
+           setPen(x,(int)Math.round(xy),c);
         }
     }
    }
@@ -162,24 +180,21 @@ public class Lienzo {
           //double m=Math.tan(a);
           //(y-y1)=m(x-x1)
           //double y2=m*(x1-x2);
-          /*
+          
           double pa=d*Math.cos(Math.toRadians(a));
           double pb=d*Math.sin(Math.toRadians(a));
           double x2=x1+Math.abs(pa);
           double y2=x2+Math.abs(pb);
-          */
-          this.setPen((int)x1,(int)y1,c);
+          
+          /*this.setPen((int)x1,(int)y1,c);
           double x2=0;
           double y2=0;
         for(double t=0; t<=a;t+=.01){
            x2=x1+d*Math.cos(Math.toRadians(t));
            y2=y1+d*Math.sin(Math.toRadians(t));
-           //this.setPen((int)x2,(int)y2,c);
-                     //this.dibujaLinea(x1,y1,(int)x2,(int)y2,c);
-
-        }
-          //System.out.println("x2: "+x2+ " y2: "+y2);
-          this.dibujaLinea(x1,y1,(int)x2,(int)y2,c);
+         }*/
+         System.out.printf("x1: %s y1: %s x2: %s y2: %s%s",x1,y1,x2,y2,System.lineSeparator());
+         this.dibujaLinea(x1,y1,(int)Math.round(x2),(int)Math.round(y2),c);
       }
       
       
@@ -219,7 +234,8 @@ public class Lienzo {
   
    
    /***
-    Genera un lienzo a partir de un arreglo de cadenas El lienzo tiene como ancho, el ancho de la cadena más grande 
+    Genera un lienzo a partir de un arreglo de cadenas 
+    * El lienzo tiene como ancho, el ancho de la cadena más grande 
     * El lienzo tiene de alto, el número de cadenas presente en el arreglo 
     * Uso String [] strImagen = { " ,-,", "/.(", "\\ {", " `-`" }; 
     * Lienzo luna = Lienzo.LienzoFactory(strImagen);
