@@ -13,10 +13,13 @@ package programacionavanzada_tarea_01;
 public class Espacio extends LienzoConMarco {
     
     private Nave miNave;
+    private Lienzo tierra;
     
     public Espacio(Nave miNave){
-        super(100,100);
-        this.agregaNave(miNave);
+        super(100,100);  
+        tierra= new Tierra(); 
+        this.agregaNave(miNave);     
+        
     }
     
     
@@ -28,8 +31,8 @@ public class Espacio extends LienzoConMarco {
    public void agregaNave(Nave miNave){
        this.estadoInicial();    
        this.miNave=miNave;
-       this.agregaLienzo(0, 0, miNave);       
- 
+       this.agregaLienzo(0, 0, miNave); 
+       
    }
    
    /***
@@ -46,7 +49,8 @@ public class Espacio extends LienzoConMarco {
     */
    public void estadoInicial(){
        this.clear();
-       this.paint();
+       this.agregaLienzo(40, 40, tierra);            
+       //this.paint();
    }
    
    /***
@@ -65,7 +69,8 @@ public class Espacio extends LienzoConMarco {
         
        for(int x1=0;x1<miNave.getAncho();x1++)
         for(int y1=0;y1<miNave.getAlto();y1++)
-             this.getLienzo()[x1+x][y1+y]=miNave.getLienzo()[x1][y1];
+             //this.getLienzo()[x1+x][y1+y]=miNave.getLienzo()[x1][y1];
+            this.getLienzo()[x1+x][y1+y]=miNave.getLienzo()[x1][y1];
    }
    
     

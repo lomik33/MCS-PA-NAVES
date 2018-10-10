@@ -24,18 +24,18 @@ public class Main {
      */
     public static void main(String[] args) {
     // TODO code application logic here
-//        Reloj miReloj = new Reloj();
-//        miReloj.setHoraExacta(true);
-//        System.out.println(miReloj);
-//        
-//        Reloj miOtroReloj = new RelojDigital();
-//        miOtroReloj.setHoraExacta(true);
-//        System.out.println(miOtroReloj);
+        Reloj miReloj = new Reloj();
+        miReloj.setHoraExacta(true);
+        System.out.println(miReloj);
+        
+        Reloj miOtroReloj = new RelojDigital();
+        miOtroReloj.setHoraExacta(true);
+        System.out.println(miOtroReloj);
         
         Nave miNave = new Nave();        
         Espacio terrestre = new Espacio(miNave);
         System.out.println(terrestre);
-//        
+        
         terrestre.mueveNave(20, 20);
         System.out.println(terrestre);
         
