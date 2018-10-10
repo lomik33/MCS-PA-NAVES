@@ -27,7 +27,7 @@ public class Main {
     public static void main(String[] args) {
     // TODO code application logic here
         Reloj miReloj = new Reloj();
-        miReloj.setHoraExacta(true);
+        miReloj.setHoraExacta(false);
         System.out.println(miReloj);
         
         Reloj miOtroReloj = new RelojDigital();
