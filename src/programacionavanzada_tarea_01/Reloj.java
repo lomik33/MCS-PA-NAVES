@@ -14,9 +14,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class Reloj extends Lienzo {
     
-    private static final float dosPi = (float)(2.0 * Math.PI);
-    private static final float tresPi = (float)(3.0 * Math.PI);
-    private static final float rad = (float)(Math.PI / 30.0);
+
     
     private int hora;
     private boolean horaExacta;
@@ -109,14 +107,14 @@ public class Reloj extends Lienzo {
         int y=this.getAlto()/2;
         this.dibujaCirculo(x, y, 20,'I');
         double gradosHora=getGradosHora(this.hora);
-        this.dibujaLinea(40, 40,10 , gradosHora,'h');
-        //System.out.println("hora"+ hora+ "grados "+gradosHora);        
+        this.dibujaLinea(40, 40,16 , gradosHora,'h');
+        //System.out.println("hora: "+ hora+ " grados "+gradosHora);        
         double gradosMinuto=getGradosMinutoSegundo(this.minutos);
-        //System.out.println("minutos"+ minutos+ "grados "+gradosMinuto);
+        //System.out.println("minutos: "+ minutos+ " grados "+gradosMinuto);
         this.dibujaLinea(40, 40,15 , gradosMinuto,'m');
         double gradosSegundo=getGradosMinutoSegundo(this.segundos);
         this.dibujaLinea(40, 40,15 , gradosSegundo,'s');
-        //System.out.println("segundos"+ segundos+ "grados "+gradosSegundo);
+        //System.out.println("segundos: "+ segundos+ " grados "+gradosSegundo);
         
        // this.dibujaLinea(40, 40,15 , gradosHora '.');
        

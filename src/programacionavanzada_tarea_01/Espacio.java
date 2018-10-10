@@ -18,6 +18,8 @@ public class Espacio extends LienzoConMarco {
     public Espacio(Nave miNave){
         super(100,100);  
         tierra= new Tierra(); 
+        this.estadoInicial();
+        this.paint();
         this.agregaNave(miNave);     
         
     }
@@ -50,7 +52,7 @@ public class Espacio extends LienzoConMarco {
    public void estadoInicial(){
        this.clear();
        this.agregaLienzo(40, 40, tierra);            
-       //this.paint();
+       
    }
    
    /***

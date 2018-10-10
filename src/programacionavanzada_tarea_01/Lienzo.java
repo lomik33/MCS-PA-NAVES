@@ -101,21 +101,16 @@ public class Lienzo {
       */
     public void dibujaLinea(int x1, int y1, int x2, int y2, char c){
 
-        int xswap=x1;
-        int yswap=y1;
-        if(x1>x2){
-            x1=x2;
-            x2=xswap;
-            y1=y2;
-            y2=yswap;
+        int xswap= x1;
+        int yswap = y1;
+        if(x1 > x2 || (x1 == x2 && y2 < y1))
+        {
+            x1 = x2;
+            y1 = y2;
+            x2 = xswap;
+            y2 = yswap;
         }
-        if(y1>y2){
-            y1=y2;
-            y2=yswap;
-            x1=x2;
-            x2=xswap;
-            
-        }
+
         //System.out.printf("Trazando linea: x1: %s y1: %s x2: %s y2: %s%s",x1,y1,x2,y2,System.lineSeparator());
 
         if(x1==x2){
@@ -200,7 +195,7 @@ public class Lienzo {
             x2=x1+d*Math.cos(Math.toRadians(t));
             y2=y1+d*Math.sin(Math.toRadians(t));
          }
-         //System.out.printf("x1: %s y1: %s x2: %s y2: %s%s",x1,y1,x2,y2,System.lineSeparator());
+        // System.out.printf("x1: %s y1: %s x2: %s y2: %s%s",x1,y1,x2,y2,System.lineSeparator());
          this.dibujaLinea(x1,y1,(int)Math.round(x2),(int)Math.round(y2),c);
       }
       
