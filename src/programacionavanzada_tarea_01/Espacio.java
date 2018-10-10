@@ -26,10 +26,10 @@ public class Espacio extends LienzoConMarco {
      * @param miNave
    */
    public void agregaNave(Nave miNave){
-       
-        this.miNave=miNave;
-        this.estadoInicial();
-        mueveNave(0,0);
+       this.estadoInicial();    
+       this.miNave=miNave;
+       this.agregaLienzo(0, 0, miNave);       
+ 
    }
    
    /***
@@ -46,7 +46,7 @@ public class Espacio extends LienzoConMarco {
     */
    public void estadoInicial(){
        this.clear();
-     
+       this.paint();
    }
    
    /***
@@ -56,6 +56,13 @@ public class Espacio extends LienzoConMarco {
     */
    public void mueveNave(int x, int y){
     
+        /*Si es mayor el tamaño entonces lo ajusto*/
+        int xtotal = x + miNave.getAncho();
+        int ytotal = y + miNave.getAlto();
+        if (ytotal > this.getAlto() || xtotal > this.getAncho()) {
+            resize(xtotal, ytotal);
+        }
+        
        for(int x1=0;x1<miNave.getAncho();x1++)
         for(int y1=0;y1<miNave.getAlto();y1++)
              this.getLienzo()[x1+x][y1+y]=miNave.getLienzo()[x1][y1];

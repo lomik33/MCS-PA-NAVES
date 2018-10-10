@@ -56,28 +56,14 @@ public class Nave extends LienzoConMarco {
 "       .\n" +
 "       .\n" +
 "       .\n";
-        this.importaString(s);
+       int y=this.getAlto()-2;;
+        for(String texto:s.split("\n")){
+            this.setTexto(1,y,texto);
+            y--;
+        }
    
     }
     
-    
-    public void importaString(String c){
-        char [] sc=c.toCharArray();
-        int maxAlto =this.getAlto()-2;
-        int maxAncho=this.getAncho()-1;
-        int x=0, y=maxAlto;
-        for(int i=0;i<sc.length;i++){
-            if(sc[i]=='\n'){
-                x=0;
-                y--;
-            }
-            else
-                x++;
-            if(x<maxAncho && sc[i]!='\n')
-                this.setPen(x, y,sc[i]);
-        }
-            
-    }
     
    
 }

@@ -93,10 +93,11 @@ public class Reloj extends Lienzo {
         }
     }
     
-//    @Override
-//    public String toString(){
-//        return "";
-//    }
+    @Override
+    public void paint(){
+        this.update();
+        super.paint();
+    }
     /***
      * Actualiza los gráficos que generan al reloj 
      * Primero borra todo el contenido del lienzo 
@@ -107,30 +108,58 @@ public class Reloj extends Lienzo {
         int x=this.getAncho()/2;
         int y=this.getAlto()/2;
         this.dibujaCirculo(x, y, 20,'I');
-        double gradosHora=getGrados(this.hora);
-        System.out.println("hora"+ hora+ "grados "+gradosHora);
+        double gradosHora=getGradosHora(this.hora);
+        this.dibujaLinea(40, 40,10 , gradosHora,'h');
+        //System.out.println("hora"+ hora+ "grados "+gradosHora);        
+        double gradosMinuto=getGradosMinutoSegundo(this.minutos);
+        //System.out.println("minutos"+ minutos+ "grados "+gradosMinuto);
+        this.dibujaLinea(40, 40,15 , gradosMinuto,'m');
+        double gradosSegundo=getGradosMinutoSegundo(this.segundos);
+        this.dibujaLinea(40, 40,15 , gradosSegundo,'s');
+        //System.out.println("segundos"+ segundos+ "grados "+gradosSegundo);
         
-        //this.dibujaLinea(40, 40,15 , gradosHora '.');
+       // this.dibujaLinea(40, 40,15 , gradosHora '.');
        
     }
     
-    private int getGrados(int hora){
-        
+    @Override
+    public String toString(){
+        this.update();
+        return super.toString();
+    }
+    
+   /***
+    * Utilitario para saber los grados de hora
+    *
+    */ 
+    private int getGradosHora(int xhora){        
         int centinela=0;
         int hi=3;
-        while(hi!=hora)
-        {
-           
-            
-            hi--; 
+        while(hi!=xhora)
+        {   hi--; 
             if(hi==0)
                 hi=12;
-            centinela+=30;
-            
+            centinela+=30;            
         }
         return centinela;
     }
     
+     /***
+    * Utilitario para saber los grados de min
+    *
+    */ 
+    private int getGradosMinutoSegundo(int ms){        
+        int centinela=0;
+        int hi=15;
+        while(hi!=ms)
+        {   hi--; 
+            if(hi==0)
+                hi=60;
+            centinela+=6;            
+        }
+        return centinela;
+    }
     
+
     
 }

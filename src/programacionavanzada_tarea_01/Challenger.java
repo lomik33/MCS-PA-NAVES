@@ -38,7 +38,11 @@ public class Challenger extends Nave {
 "|||||||         |||||||\n" +
 "-------         -------\n" +
 " (~~~)           (~~~)\n";
-        this.importaString(s);
+       int y=this.getAlto()-2;;
+        for(String texto:s.split("\n")){
+            this.setTexto(1,y,texto);
+            y--;
+        }
     }
     
     

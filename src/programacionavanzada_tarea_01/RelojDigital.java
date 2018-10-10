@@ -31,17 +31,17 @@ public class RelojDigital extends Reloj {
             +File.separator
             +"numeros"
             +File.separator ;
-            numeros[0]=Lienzo.lienzoFactory(Main.leerArchivo(ruta+"0.txt").split(System.lineSeparator()));
-            numeros[1]=Lienzo.lienzoFactory(Main.leerArchivo(ruta+"1.txt").split(System.lineSeparator()));
-            numeros[2]=Lienzo.lienzoFactory(Main.leerArchivo(ruta+"2.txt").split(System.lineSeparator()));
-            numeros[3]=Lienzo.lienzoFactory(Main.leerArchivo(ruta+"3.txt").split(System.lineSeparator()));
-            numeros[4]=Lienzo.lienzoFactory(Main.leerArchivo(ruta+"4.txt").split(System.lineSeparator()));
-            numeros[5]=Lienzo.lienzoFactory(Main.leerArchivo(ruta+"5.txt").split(System.lineSeparator()));
-            numeros[6]=Lienzo.lienzoFactory(Main.leerArchivo(ruta+"6.txt").split(System.lineSeparator()));
-            numeros[7]=Lienzo.lienzoFactory(Main.leerArchivo(ruta+"7.txt").split(System.lineSeparator()));
-            numeros[8]=Lienzo.lienzoFactory(Main.leerArchivo(ruta+"8.txt").split(System.lineSeparator()));
-            numeros[9]=Lienzo.lienzoFactory(Main.leerArchivo(ruta+"9.txt").split(System.lineSeparator()));
-            dosPuntos=Lienzo.lienzoFactory(Main.leerArchivo(ruta+"dosPuntos.txt").split(System.lineSeparator()));
+            numeros[0]=Lienzo.lienzoFactory(leerArchivo(ruta+"0.txt").split(System.lineSeparator()));
+            numeros[1]=Lienzo.lienzoFactory(leerArchivo(ruta+"1.txt").split(System.lineSeparator()));
+            numeros[2]=Lienzo.lienzoFactory(leerArchivo(ruta+"2.txt").split(System.lineSeparator()));
+            numeros[3]=Lienzo.lienzoFactory(leerArchivo(ruta+"3.txt").split(System.lineSeparator()));
+            numeros[4]=Lienzo.lienzoFactory(leerArchivo(ruta+"4.txt").split(System.lineSeparator()));
+            numeros[5]=Lienzo.lienzoFactory(leerArchivo(ruta+"5.txt").split(System.lineSeparator()));
+            numeros[6]=Lienzo.lienzoFactory(leerArchivo(ruta+"6.txt").split(System.lineSeparator()));
+            numeros[7]=Lienzo.lienzoFactory(leerArchivo(ruta+"7.txt").split(System.lineSeparator()));
+            numeros[8]=Lienzo.lienzoFactory(leerArchivo(ruta+"8.txt").split(System.lineSeparator()));
+            numeros[9]=Lienzo.lienzoFactory(leerArchivo(ruta+"9.txt").split(System.lineSeparator()));
+            dosPuntos=Lienzo.lienzoFactory(leerArchivo(ruta+"dosPuntos.txt").split(System.lineSeparator()));
    
    
     }

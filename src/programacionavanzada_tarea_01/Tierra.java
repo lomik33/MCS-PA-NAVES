@@ -9,10 +9,10 @@ package programacionavanzada_tarea_01;
  *
  * @author CoreMac
  */
-public class Tierra extends Calcomania {
+public class Tierra extends LienzoConMarco {
     
-    public Tierra(int alto, int ancho){
-        super(alto,ancho);
+    public Tierra(){
+        super(38,20);
         String tierra="               ____\n" +
 "          .-'\"\"p 8o\"\"`-.\n" +
 "       .-'8888P'Y.`Y[ ' `-.\n" +
@@ -32,6 +32,10 @@ public class Tierra extends Calcomania {
 "       `-.      d8P'    ,-'   \n" +
 "          `-.,,_'__,,.-'";
         
-        this.importaString(tierra);
+       int y=this.getAlto()-2;;
+        for(String texto:tierra.split("\n")){
+            this.setTexto(1,y,texto);
+            y--;
+        }
     }
 }

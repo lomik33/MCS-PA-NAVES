@@ -5,6 +5,13 @@
  */
 package programacionavanzada_tarea_01;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Lienzo {
 
     /***
@@ -103,13 +110,13 @@ public class Lienzo {
             y2=yswap;
         }
         if(y1>y2){
-            //y1=y2;
-            //y2=yswap;
-            //x1=x2;
-            //x2=xswap;
+            y1=y2;
+            y2=yswap;
+            x1=x2;
+            x2=xswap;
             
         }
-        System.out.printf("Trazando linea: x1: %s y1: %s x2: %s y2: %s%s",x1,y1,x2,y2,System.lineSeparator());
+        //System.out.printf("Trazando linea: x1: %s y1: %s x2: %s y2: %s%s",x1,y1,x2,y2,System.lineSeparator());
 
         if(x1==x2){
             for(int y=y1;y<=y2;y++)
@@ -180,20 +187,20 @@ public class Lienzo {
           //double m=Math.tan(a);
           //(y-y1)=m(x-x1)
           //double y2=m*(x1-x2);
-          
+          /*
           double pa=d*Math.cos(Math.toRadians(a));
           double pb=d*Math.sin(Math.toRadians(a));
           double x2=x1+Math.abs(pa);
-          double y2=x2+Math.abs(pb);
+          double y2=x2+Math.abs(pb);*/
           
-          /*this.setPen((int)x1,(int)y1,c);
+          //this.setPen((int)x1,(int)y1,c);
           double x2=0;
           double y2=0;
-        for(double t=0; t<=a;t+=.01){
-           x2=x1+d*Math.cos(Math.toRadians(t));
-           y2=y1+d*Math.sin(Math.toRadians(t));
-         }*/
-         System.out.printf("x1: %s y1: %s x2: %s y2: %s%s",x1,y1,x2,y2,System.lineSeparator());
+          for(double t=0; t<=a;t+=.01){
+            x2=x1+d*Math.cos(Math.toRadians(t));
+            y2=y1+d*Math.sin(Math.toRadians(t));
+         }
+         //System.out.printf("x1: %s y1: %s x2: %s y2: %s%s",x1,y1,x2,y2,System.lineSeparator());
          this.dibujaLinea(x1,y1,(int)Math.round(x2),(int)Math.round(y2),c);
       }
       
@@ -272,8 +279,8 @@ public class Lienzo {
         int maxAlto=this.getAlto()-1;
         //int x=0, y=maxAlto;
         for(int i=0;i<sc.length;i++){          
-            if(i<=maxAncho&&y<=maxAlto)
-                this.setPen(i, y,sc[i]);
+            if(x+i<=maxAncho&&y<=maxAlto)
+                this.setPen(x+i, y,sc[i]);
         }
             
     }
@@ -335,7 +342,46 @@ public class Lienzo {
             }
         }
 
-        System.out.printf("Se agrego al lienzo de tamaño: %dx%d un lienzo de %dx%d %s", this.getAncho(), this.getAlto(), la.getAncho(), la.getAlto(), System.lineSeparator());
+        //System.out.printf("Se agrego al lienzo de tamaño: %dx%d un lienzo de %dx%d %s", this.getAncho(), this.getAlto(), la.getAncho(), la.getAlto(), System.lineSeparator());
 
     }
+    
+    
+    /**
+     * Utilitario para leer un archivo y regresar el contenido en una cadena de texto a partir de una ruta
+     * @param ruta
+     * @return 
+     */
+    public static String leerArchivo(String ruta){
+        String contenido="";
+        File file= new File(ruta);
+        if(file.exists()){
+            try {
+                FileReader fileReader= new FileReader(file); 
+                BufferedReader reader= new BufferedReader(fileReader);
+                contenido=reader.readLine()+System.lineSeparator();
+                String linea="";
+                while((linea=reader.readLine())!=null){
+                    contenido+=linea;
+                    contenido+=System.lineSeparator();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        
+        return contenido;
+    }
+    
+    /***
+     * Obtiene el caracter del lienzo en la posición x, y Si el caracter x, y esta fuera del lienzo retorna 0
+     * @param x
+     * @param y
+     * @return 
+     */
+    public char getPen(int x, int y) {
+            return lienzo[x][y];
+        }
 }
