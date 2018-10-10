@@ -9,7 +9,7 @@ package programacionavanzada_tarea_01;
  *
  * @author CoreMac
  */
-public class Nave extends LienzoConMarco {
+public class Nave extends Lienzo {
     
     /***
      * Genera la vane de un tamaño personalizado por el usuario

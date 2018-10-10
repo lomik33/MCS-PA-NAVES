@@ -10,7 +10,7 @@ package programacionavanzada_tarea_01;
  * La escena depende del autor pero incluye a la tierra y objetos iniciales.
  * @author Ismael López Martínez
  */
-public class Espacio extends LienzoConMarco {
+public class Espacio extends Lienzo {
     
     private Nave miNave;
     private Lienzo tierra;
@@ -19,7 +19,6 @@ public class Espacio extends LienzoConMarco {
         super(100,100);  
         tierra= new Tierra(); 
         this.estadoInicial();
-        this.paint();
         this.agregaNave(miNave);     
         
     }
@@ -61,7 +60,7 @@ public class Espacio extends LienzoConMarco {
     * @param y 
     */
    public void mueveNave(int x, int y){
-    
+    this.estadoInicial();
         /*Si es mayor el tamaño entonces lo ajusto*/
         int xtotal = x + miNave.getAncho();
         int ytotal = y + miNave.getAlto();
@@ -72,7 +71,7 @@ public class Espacio extends LienzoConMarco {
        for(int x1=0;x1<miNave.getAncho();x1++)
         for(int y1=0;y1<miNave.getAlto();y1++)
              //this.getLienzo()[x1+x][y1+y]=miNave.getLienzo()[x1][y1];
-            this.getLienzo()[x1+x][y1+y]=miNave.getLienzo()[x1][y1];
+            this.setPen(x1+x,y1+y,miNave.getPen(x1,y1));
    }
    
     

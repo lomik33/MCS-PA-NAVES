@@ -15,7 +15,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author CoreMac
+ * @author Ismael López Martínez
+ * Tarea 1 Programación Avanzada MCA
+ * 10-10-2018
  */
 public class Main {
 

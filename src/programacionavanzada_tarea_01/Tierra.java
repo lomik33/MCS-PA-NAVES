@@ -9,7 +9,7 @@ package programacionavanzada_tarea_01;
  *
  * @author CoreMac
  */
-public class Tierra extends LienzoConMarco {
+public class Tierra extends Lienzo {
     
     public Tierra(){
         super(38,20);

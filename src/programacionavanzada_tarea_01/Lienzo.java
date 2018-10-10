@@ -29,10 +29,6 @@ public class Lienzo {
         return alto;
     }
 
-//    Atributos de la clase
-    public char[][] getLienzo() {
-        return lienzo;
-    }
     private int ancho;
     private int alto;
     private char [][] lienzo;
@@ -333,7 +329,7 @@ public class Lienzo {
 
         for (int ix = 0; ix < la.getAncho(); ix++) {
             for (int iy = 0; iy < la.getAlto(); iy++) {
-                this.lienzo[x + ix][y + iy] = la.getLienzo()[ix][iy];
+                this.lienzo[x + ix][y + iy] = la.getPen(ix,iy);
             }
         }
 
