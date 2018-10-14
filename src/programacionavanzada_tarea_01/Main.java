@@ -42,6 +42,7 @@ public class Main {
         System.out.println(terrestre);
         
         Nave otraNave = new Challenger();
+        
         terrestre.agregaNave(otraNave);
         terrestre.mueveNave(80, 40);
         System.out.println(terrestre);
